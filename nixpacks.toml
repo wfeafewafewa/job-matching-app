@@ -2,7 +2,10 @@
 PHP_VERSION = "8.2"
 
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.pdo", "php82Extensions.session"]
+nixPkgs = ["php82", "php82Extensions.pdo", "php82Extensions.session", "php82Extensions.mbstring"]
+
+[phases.build]
+cmds = ["echo 'No build needed for simple PHP app'"]
 
 [phases.start]
-cmd = "./start.sh"
+cmd = "php -S 0.0.0.0:$PORT index.php"
