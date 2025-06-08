@@ -1,17 +1,11 @@
 <?php
-// Railway用ポート設定
-$port = $_ENV['PORT'] ?? getenv('PORT') ?? 8080;
+session_start();
 
-// デバッグ情報表示
-if (isset($_GET['debug'])) {
-    echo "<h1>Debug Info</h1>";
-    echo "<p>PHP Version: " . phpversion() . "</p>";
-    echo "<p>Port: " . $port . "</p>";
-    echo "<p>Environment: " . print_r($_ENV, true) . "</p>";
+// Railway環境チェック
+if (isset($_GET['info'])) {
+    phpinfo();
     exit;
 }
-
-session_start();
 
 // データベース設定（実際の環境に合わせて変更してください）
 $db_config = [
